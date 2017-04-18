@@ -9,9 +9,9 @@ DataMapper.setup(:default, 'sqlite::memory:')
 DataMapper.finalize
 DataMapper.auto_migrate!
 
-# curl http://localhost:4567; echo
+# http://localhost:4567
 get '/' do
-  "Hello World!"
+  erb :index
 end
 
 # curl http://localhost:4567/people; echo

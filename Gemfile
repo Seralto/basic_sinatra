@@ -5,3 +5,4 @@ gem 'sinatra-contrib' # For json
 gem 'rake'
 gem 'data_mapper'
 gem 'dm-sqlite-adapter'
+gem 'shotgun', '~> 0.9.2' # Reloading Rack development server

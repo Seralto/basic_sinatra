@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <title>Basic Sinatra APP</title>
+  </head>
+  <body class='container'>
+    <h1>Basic Sinatra APP</h1>
+
+    <p>Run the app: $ ruby app.rb</p>
+    <p>And try one of the following commands:</p>
+    <ul>
+      <li>curl http://localhost:4567/people</li>
+      <li>curl -d "person[name]=John&person[age]=30" http://localhost:4567/people</li>
+      <li>curl http://localhost:4567/people/1</li>
+      <li>curl -X PUT -d "person[name]=Joe" http://localhost:4567/people/1</li>
+      <li>curl -X DELETE http://localhost:4567/people/1</li>
+    </ul>
+  </body>
+</html>
