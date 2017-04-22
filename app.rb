@@ -1,11 +1,12 @@
 class App < Sinatra::Base
    # http://localhost:4567
   get '/' do
-    erb :index
+    # erb :index
+    haml :index
   end
 
   # curl http://localhost:4567/people; echo
-  get '/people' do
+  get '/people.json' do
     content_type :json
 
     people = People.all

@@ -4,11 +4,10 @@ Bundler.require
 
 require './app'
 require './lib/people'
-# require_relative './lib/people' # or ruby -Ilib app.rb
 
 # Set DataMapper
-DataMapper.setup(:default, 'sqlite::memory:')
-DataMapper.finalize
-DataMapper.auto_migrate!
+# DataMapper.setup(:default, 'sqlite::memory:')
+DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/db/development.db")
+DataMapper.finalize.auto_upgrade!
 
 run App
