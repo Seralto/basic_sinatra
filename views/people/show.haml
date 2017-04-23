@@ -1,6 +1,6 @@
-%div.row
-  %div.col-lg-6
-    %div.well
+.row
+  .col-lg-6
+    .well
       %p
         %b Name:
         = @person.name
@@ -11,6 +11,8 @@
       %br
 
       %form{action: "/people/#{@person.id}", method: "post"}
-        %div.form-group
+        .form-group
           %input{type: "hidden", name: "_method", value: "delete"}
           %input{:type => "submit", :value => "Delete", class: "btn btn-sm btn-danger"}
+
+%a.btn.btn-sm.btn-primary{href: "/people"} Back

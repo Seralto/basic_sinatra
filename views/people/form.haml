@@ -1,0 +1,10 @@
+.row
+  .col-lg-6
+    .well
+      %form{action: "/people", method: "post", class: "form-inline"}
+        %div.form-group
+          %label Name:
+          %input{type: "text", name: "person[name]", class: "form-control"}
+          %label Age:
+          %input{type: "text", name: "person[age]", class: "form-control"}
+          %input{:type => "submit", :value => "Save", class: "btn btn-success"}

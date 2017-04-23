@@ -1,0 +1,20 @@
+=haml :'people/form'
+
+.row
+  .col-lg-6
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Name
+          %th Age
+          %th.short{colspan: 2} Options
+
+      %tbody
+        -@people.each do |person|
+          %tr
+            %td= person.name
+            %td= person.age
+            %td
+              %a{href: "/people/#{person.id}", class: "btn btn-xs btn-info"} Show
+            %td
+              %a{href: "/people/#{person.id}/edit", class: "btn btn-xs btn-warning"} Edit

@@ -2,17 +2,9 @@ class App < Sinatra::Base
   set :method_override, true # Enable/disable the POST _method hack
   enable :sessions
   register Sinatra::Flash
+  register Sinatra::MultiRoute
 
-  get '/' do
-    @people = People.all
-    haml :index
-  end
-
-  get '/people' do
-    @people = People.all
-    haml :index
-  end
-
+  # Index json
   get '/people.json' do
     content_type :json
 
@@ -20,11 +12,19 @@ class App < Sinatra::Base
     people.to_json
   end
 
-  get '/people/:id' do
-    @person = People.get params[:id]
-    haml :show
+  # Index
+  get '/', '/people' do
+    @people = People.all
+    haml :'people/index'
   end
 
+  # Show
+  get '/people/:id' do
+    @person = People.get params[:id]
+    haml :'people/show'
+  end
+
+  # Create
   post '/people' do
     person = People.new params[:person]
     if person.save
@@ -35,6 +35,13 @@ class App < Sinatra::Base
     redirect '/'
   end
 
+  # Edit
+  get '/people/:id/edit' do
+    @person = People.get params[:id]
+    haml :'people/edit'
+  end
+
+  # Update
   put '/people/:id' do
     content_type :json
 
@@ -48,6 +55,7 @@ class App < Sinatra::Base
     end
   end
 
+  # Delete
   delete '/people/:id' do
     person = People.get params[:id]
     if person.destroy
