@@ -4,7 +4,7 @@ class App < Sinatra::Base
   register Sinatra::Flash
   register Sinatra::MultiRoute
 
-  # Index json
+  # json
   get '/people.json' do
     content_type :json
 
@@ -14,6 +14,7 @@ class App < Sinatra::Base
 
   # Index
   get '/', '/people' do
+    @person = People.new
     @people = People.all
     haml :'people/index'
   end
@@ -25,7 +26,7 @@ class App < Sinatra::Base
   end
 
   # Create
-  post '/people' do
+  post '/people/' do
     person = People.new params[:person]
     if person.save
       flash[:notice] = "Person was created"
@@ -43,16 +44,13 @@ class App < Sinatra::Base
 
   # Update
   put '/people/:id' do
-    content_type :json
-
     person = People.get params[:id]
     if person.update params[:person]
-      status = 200
-      json 'Person was updated'
+      flash[:notice] = "Person was updated"
     else
-      status 500
-      json 'An error occurs'
+      flash[:alert] = person.errors.full_messages.join(', ')
     end
+    redirect '/'
   end
 
   # Delete

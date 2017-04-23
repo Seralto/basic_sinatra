@@ -1,10 +1,12 @@
 .row
   .col-lg-6
     .well
-      %form{action: "/people", method: "post", class: "form-inline"}
+      %form{action: "/people/#{@person.id}", method: "post", class: "form-inline"}
+        -if @person.id
+          %input{type: "hidden", name: "_method", value: "put"}
         %div.form-group
           %label Name:
-          %input{type: "text", name: "person[name]", class: "form-control"}
+          %input{type: "text", name: "person[name]", class: "form-control", value: @person.name}
           %label Age:
-          %input{type: "text", name: "person[age]", class: "form-control"}
+          %input{type: "text", name: "person[age]", class: "form-control", value: @person.age}
           %input{:type => "submit", :value => "Save", class: "btn btn-success"}
