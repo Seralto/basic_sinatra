@@ -1,7 +1,10 @@
 class App < Sinatra::Base
+  enable :sessions
+  register Sinatra::Flash
+
    # http://localhost:4567
   get '/' do
-    # erb :index
+    @people = People.all
     haml :index
   end
 
@@ -23,16 +26,13 @@ class App < Sinatra::Base
 
   # curl -d "person[name]=Sergio&person[age]=39" http://localhost:4567/people; echo
   post '/people' do
-    content_type :json
-
     person = People.new params[:person]
     if person.save
-      status 201
-      json 'Person was created'
+      flash[:notice] = "Person was created"
     else
-      status 500
-      json person.errors.full_messages
+      flash[:notice] = person.errors.full_messages.join(', ')
     end
+    redirect '/'
   end
 
   # curl -X PUT -d "person[name]=Sergiones" http://localhost:4567/people/1; echo

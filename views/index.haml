@@ -6,4 +6,23 @@
   %body
     %h1 Basic Sinatra APP
 
-  
+    %p= flash[:notice] if flash[:notice]
+
+    %form{ action: "/people", method: "post"}
+      %label Name:
+      %input{type: "text", name: "person[name]"}
+      %label Age:
+      %input{type: "text", name: "person[age]"}
+      %input{:type => "submit", :value => "Send", :class => "button"}
+
+    %table{ cellpadding: 4, cellspacing: 0, border: 1 }
+      %thead
+        %tr
+          %td Name
+          %td Age
+
+    %tbody
+    - @people.each do |person|
+      %tr
+        %td= person.name
+        %td= person.age
