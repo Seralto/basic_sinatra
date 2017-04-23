@@ -1,0 +1,12 @@
+h1 {
+  margin-bottom: 25px;
+}
+
+table thead tr {
+  background: #337ab7;
+  color: #fff;
+}
+
+table thead tr th.short {
+  width: 65px;
+}

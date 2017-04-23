@@ -1,0 +1,16 @@
+%div.row
+  %div.col-lg-6
+    %div.well
+      %p
+        %b Name:
+        = @person.name
+      %p
+        %b Age:
+        = @person.age
+
+      %br
+
+      %form{action: "/people/#{@person.id}", method: "post"}
+        %div.form-group
+          %input{type: "hidden", name: "_method", value: "delete"}
+          %input{:type => "submit", :value => "Delete", class: "btn btn-sm btn-danger"}

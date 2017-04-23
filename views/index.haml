@@ -1,28 +1,27 @@
-!!! 5
-%html
-  %head
-    %meta(charset="utf-8")
-    %title Basic Sinatra APP
-  %body
-    %h1 Basic Sinatra APP
+%div.row
+  %div.col-lg-6
+    %div.well
+      %form{action: "/people", method: "post", class: "form-inline"}
+        %div.form-group
+          %label Name:
+          %input{type: "text", name: "person[name]", class: "form-control"}
+          %label Age:
+          %input{type: "text", name: "person[age]", class: "form-control"}
+          %input{:type => "submit", :value => "Save", class: "btn btn-default"}
 
-    %p= flash[:notice] if flash[:notice]
-
-    %form{ action: "/people", method: "post"}
-      %label Name:
-      %input{type: "text", name: "person[name]"}
-      %label Age:
-      %input{type: "text", name: "person[age]"}
-      %input{:type => "submit", :value => "Send", :class => "button"}
-
-    %table{ cellpadding: 4, cellspacing: 0, border: 1 }
+%div.row
+  %div.col-lg-6
+    %table.table.table-striped
       %thead
         %tr
-          %td Name
-          %td Age
+          %th Name
+          %th Age
+          %th.short Options
 
-    %tbody
-    - @people.each do |person|
-      %tr
-        %td= person.name
-        %td= person.age
+      %tbody
+      - @people.each do |person|
+        %tr
+          %td= person.name
+          %td= person.age
+          %td
+            %a{href: "/people/#{person.id}", class: "btn btn-xs btn-info"} Show
