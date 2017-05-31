@@ -6,7 +6,7 @@ class App < Sinatra::Base
 
   # json
   get '/people.json' do
-    content_type :json
+    content_type :json, charset: 'utf-8'
 
     people = People.all
     people.to_json
