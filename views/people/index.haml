@@ -1,13 +1,13 @@
 =haml :'people/form'
 
 .row
-  .col-lg-6
+  .col-lg-7
     %table.table.table-striped
       %thead
         %tr
           %th Name
           %th Age
-          %th.short{colspan: 2} Options
+          %th{colspan: 2} Options
 
       %tbody
         -@people.each do |person|

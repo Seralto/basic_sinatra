@@ -1,5 +1,6 @@
 Basic Sinatra APP
 =================
 
-Run the app: `$ rackup`  
+Install dependencies: `$ bundle install`  
+Run the app: `$ bundle exec rackup`  
 Access: `http://localhost:9292/`

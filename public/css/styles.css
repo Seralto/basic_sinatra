@@ -7,6 +7,10 @@ table thead tr {
   color: #fff;
 }
 
-table thead tr th.short {
-  width: 65px;
+.form-box {
+  width: 100%;
+}
+
+.form-inline .form-control {
+  margin-right: 15px;
 }
